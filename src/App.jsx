@@ -1,30 +1,30 @@
-import { BrowserRouter, Routes , Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //pages
-import HomePage from './pages/HomePage';
-import ChiSiamo from './pages/ChiSiamo';
+import HomePage from "./pages/HomePage";
+import ChiSiamo from "./pages/ChiSiamo";
 import Posts from "./pages/Posts";
 import SinglePost from "./pages/SinglePost";
 
 //layouts
-import DefaultLayout from './layouts/DefaultLayout'
+import DefaultLayout from "./layouts/DefaultLayout";
 
+//context
+import { GlobalProvider } from "./context/GlobalContext";
 
 export default function App() {
-
-
-return (
-
-<BrowserRouter>
-  <Routes>
-  <Route Component={DefaultLayout}>
+  return (
+    <GlobalProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route Component={DefaultLayout}>
             <Route index Component={HomePage} />
             <Route path="/chi-siamo" Component={ChiSiamo} />
             <Route path="/posts" Component={Posts} />
             <Route path="/posts/:id" Component={SinglePost} />
           </Route>
-+  </Routes>
-</BrowserRouter>
-
-);
+        </Routes>
+      </BrowserRouter>
+    </GlobalProvider>
+  );
 }
